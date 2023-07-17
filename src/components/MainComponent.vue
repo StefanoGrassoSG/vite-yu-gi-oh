@@ -10,12 +10,6 @@ export default {
     },
     components: {
         SingleCard
-    },
-    props: {
-        cards: {
-            type: Array,
-            default: []
-        },
     }
 }
 </script>
@@ -41,22 +35,8 @@ export default {
             </div>
 
             <div class="row">
-                <div class="col-12 col-sm-6 col-md-5 col-lg-3" v-for="(singleCard, i) in store.cards" :key="i">
-                    <div class="single-card">
-                        <div>
-                            <img class="img-fluid" :src="singleCard.card_images[0].image_url" alt="">
-                        </div>
-                        <div>
-                            <h2 class="p-3 text-center text-white">
-                                {{ singleCard.name }}
-                            </h2>
-                        </div>
-                        <div>
-                            <h3 class="text-center">
-                                {{ singleCard.archetype }}
-                            </h3>
-                        </div>
-                    </div>
+                <div class="col-12 col-sm-6 col-md-5 col-lg-3" v-for="(card, i) in store.cards" :key="i">
+                    <SingleCard :card="card" />
                 </div>
             </div>
         </div>
