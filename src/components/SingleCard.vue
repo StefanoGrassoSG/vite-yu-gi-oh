@@ -31,13 +31,23 @@ export default {
             </h2>
         </div>
         <div>
-            <h3 class="text-center">
+            <h3 v-if="card.archetype != null" class="text-center text-warning">
                 {{ card.archetype }}
+            </h3>
+            <h3 class="text-center text-warning" v-else>
+                Unknown
             </h3>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
-
+.single-card {
+    border: 3px solid white;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 </style>
