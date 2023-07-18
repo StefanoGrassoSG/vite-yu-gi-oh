@@ -18,6 +18,12 @@ export default {
     .then(response => {
       this.store.cards = response.data.data
       console.log(store.cards)
+    }),
+
+    axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
+    .then(archetype => {
+      this.store.archetype = archetype.data
+      console.log(store.archetype)
     })
   },
   components: {
