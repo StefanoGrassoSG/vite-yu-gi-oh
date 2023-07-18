@@ -11,19 +11,30 @@ export default {
     }
   },
   methods: {
+    allCard() {
+      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0')
+      .then(response => {
+      this.store.cards = response.data.data
+    })
+    },
 
+    searchType() {
+      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php', {
+        params: {
+          archetype : this.store.searchText
+        }
+      })
+      .then(filter => {
+        this.store.cards = filter.data.data
+      })
+    }
   },
   created() {
-    axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
-    .then(response => {
-      this.store.cards = response.data.data
-      console.log(store.cards)
-    }),
+    this.allCard(),
 
     axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
     .then(archetype => {
       this.store.archetype = archetype.data
-      console.log(store.archetype)
     })
   },
   components: {
@@ -37,7 +48,7 @@ export default {
 
   <HeaderComponent />
 
-  <MainComponent/>
+  <MainComponent @search="searchType()"/>
 
 </template>
 

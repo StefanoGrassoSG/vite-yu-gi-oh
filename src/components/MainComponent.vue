@@ -10,11 +10,6 @@ export default {
     },
     components: {
         SingleCard
-    },
-    methods: {
-        searchType() {
-            console.log('Opzione selezionata:', event.target.value);
-        }
     }
 }
 </script>
@@ -24,9 +19,9 @@ export default {
         <div class="container">
             <div class="py-4 row">
                 <div class="col-auto">
-                    <select @change="searchType()" class="form-select" aria-label="Default select example">
+                    <select v-model="store.searchText" @change="$emit('search')" class="form-select" aria-label="Default select example">
                         <option selected>Select an archetype</option>
-                        <option v-for="(singleArchetype, i) in store.archetype" :key="i" :value='store.archetype[i].archetype_name'>{{ store.archetype[i].archetype_name }}</option>
+                        <option  v-for="(singleArchetype, i) in store.archetype" :key="i" :value='store.archetype[i].archetype_name'>{{ store.archetype[i].archetype_name }}</option>
                     </select>
                 </div>
             </div>
