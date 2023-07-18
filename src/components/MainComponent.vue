@@ -1,6 +1,7 @@
 <script>
 import SingleCard from './SingleCard.vue';
 import {store} from '../store'
+import ResultNumber from './ResultNumber.vue';
 
 export default {
     data() {
@@ -9,7 +10,8 @@ export default {
         }
     },
     components: {
-        SingleCard
+        SingleCard,
+        ResultNumber
     }
 }
 </script>
@@ -26,11 +28,7 @@ export default {
                 </div>
             </div>
 
-            <div class="result bg-black px-5 py-3">
-                <h3 class="text-white">
-                    Found {{ store.cards.length }} cards
-                </h3>
-            </div>
+            <ResultNumber />
 
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-5 col-lg-3 mb-4" v-for="(card, i) in store.cards" :key="i">
