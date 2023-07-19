@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 
 export const store = reactive({
-    searchText: "Select an archetype",
+    searchText: null,
     loading: true,
     cards: [],
     archetype: []
